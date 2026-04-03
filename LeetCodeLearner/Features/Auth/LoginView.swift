@@ -34,7 +34,10 @@ struct LoginView: View {
 
                 // Sign in section
                 VStack(spacing: AppSpacing.lg) {
-                    Button(action: signInGoogle) {
+                    Button(action: {
+                        HapticManager.shared.light()
+                        signInGoogle()
+                    }) {
                         HStack(spacing: AppSpacing.md) {
                             Image(systemName: "person.crop.circle.fill")
                                 .font(.system(size: 20))
@@ -48,6 +51,7 @@ struct LoginView: View {
                         .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
                         .cardShadow()
                     }
+                    .buttonStyle(.scalePress)
                     .disabled(isSigningIn)
                     .opacity(isSigningIn ? 0.7 : 1)
                     .padding(.horizontal, AppSpacing.xxxl)

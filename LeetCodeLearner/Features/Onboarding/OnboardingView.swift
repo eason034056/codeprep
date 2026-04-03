@@ -31,6 +31,7 @@ struct OnboardingView: View {
 
                     if currentPage < totalPages - 1 {
                         Button {
+                            HapticManager.shared.light()
                             withAnimation {
                                 currentPage += 1
                             }
@@ -43,6 +44,7 @@ struct OnboardingView: View {
                                 .background(AppColor.accentGradient)
                                 .clipShape(RoundedRectangle(cornerRadius: AppRadius.medium))
                         }
+                        .buttonStyle(.scalePress)
                         .padding(.horizontal, AppSpacing.xxl)
                     }
                 }
@@ -178,6 +180,7 @@ struct OnboardingView: View {
 
     private func pathCard(path: LearningPath, title: String, description: String, icon: String) -> some View {
         Button {
+            HapticManager.shared.light()
             withAnimation(.easeInOut(duration: 0.2)) {
                 selectedPath = path
                 UserDefaults.standard.set(path.rawValue, forKey: "learningPath")
@@ -221,6 +224,7 @@ struct OnboardingView: View {
             )
             .cardShadow()
         }
+        .buttonStyle(.scalePress)
     }
 
     // MARK: - Page 3: API Key Setup
@@ -273,6 +277,7 @@ struct OnboardingView: View {
                     }
 
                     Button {
+                        HapticManager.shared.light()
                         saveAPIKey()
                     } label: {
                         Text("Save Key")
@@ -285,6 +290,7 @@ struct OnboardingView: View {
                                     .fill(apiKeyInput.isEmpty ? AnyShapeStyle(Color.white.opacity(0.1)) : AnyShapeStyle(AppColor.accentGradient))
                             )
                     }
+                    .buttonStyle(.scalePress)
                     .disabled(apiKeyInput.isEmpty)
 
                     Link(destination: URL(string: "https://openrouter.ai/keys")!) {
@@ -306,6 +312,7 @@ struct OnboardingView: View {
                         .font(AppFont.body)
                         .foregroundStyle(.white.opacity(0.5))
                 }
+                .buttonStyle(.scalePress)
 
                 Spacer()
             }
@@ -349,6 +356,7 @@ struct OnboardingView: View {
                 Spacer().frame(height: AppSpacing.xl)
 
                 Button {
+                    HapticManager.shared.light()
                     onComplete()
                 } label: {
                     Text("Get Started")
@@ -359,6 +367,7 @@ struct OnboardingView: View {
                         .background(AppColor.accentGradient)
                         .clipShape(RoundedRectangle(cornerRadius: AppRadius.medium))
                 }
+                .buttonStyle(.scalePress)
                 .padding(.horizontal, AppSpacing.xxl)
 
                 Spacer()
