@@ -121,8 +121,8 @@ final class OpenRouterService: OpenRouterServiceProtocol, @unchecked Sendable {
         request.httpMethod = "POST"
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("CodePrep/1.0", forHTTPHeaderField: "HTTP-Referer")
-        request.setValue("CodePrep", forHTTPHeaderField: "X-Title")
+        request.setValue("CodeReps/1.0", forHTTPHeaderField: "HTTP-Referer")
+        request.setValue("CodeReps", forHTTPHeaderField: "X-Title")
         request.httpBody = try JSONEncoder().encode(body)
         request.timeoutInterval = 120
 
