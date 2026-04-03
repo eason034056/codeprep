@@ -14,6 +14,8 @@
 		087881F6EE084A7B02CFCA36 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B0E7BC5DD9604BD01A336E78 /* FirebaseAuth */; };
 		093CA814CF554B5D8111823B /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC9E136CE48B8F8537175A /* ConfettiView.swift */; };
 		0D5FB9ED49858AF64EF8C092 /* DailyNotificationIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F836C39F64DD26844E49447C /* DailyNotificationIntegrationTests.swift */; };
+		AA1B2C3D4E5F6A7B8C9D0E1F /* ProgressResetBugFixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C3D4E5F6A7B8C9D0E1F2A /* ProgressResetBugFixTests.swift */; };
+		CC3D4E5F6A7B8C9D0E1F2A3B /* MigrateOrphanedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E5F6A7B8C9D0E1F2A3B4C /* MigrateOrphanedDataTests.swift */; };
 		11075AC56C57E8F2C44F789D /* ReviewQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0A6C98BC0F278522A52743 /* ReviewQueueViewModel.swift */; };
 		13E790528A6496A364035B6B /* APIKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD27F47546DDE3DF007F51 /* APIKeyManager.swift */; };
 		16EBB27CEDAD886F3C61CEA4 /* ProgressMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1A288674E0A47BAFE9D05 /* ProgressMapper.swift */; };
@@ -196,6 +198,8 @@
 		92769A0158C3BF86F7BB7BDA /* AnimationTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTokens.swift; sourceTree = "<group>"; };
 		92C3841C2685D65CD119F4EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94AC49CCF97875AF12BC38B7 /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
+		BB2C3D4E5F6A7B8C9D0E1F2A /* ProgressResetBugFixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressResetBugFixTests.swift; sourceTree = "<group>"; };
+		DD4E5F6A7B8C9D0E1F2A3B4C /* MigrateOrphanedDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateOrphanedDataTests.swift; sourceTree = "<group>"; };
 		95B720A610421843FFBC86BE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		96A661EAD0DA8D3439C4BA42 /* AppleSignInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInTests.swift; sourceTree = "<group>"; };
 		972420FAB0451A875722C79C /* SendChatMessageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendChatMessageUseCase.swift; sourceTree = "<group>"; };
@@ -491,6 +495,7 @@
 			children = (
 				96A661EAD0DA8D3439C4BA42 /* AppleSignInTests.swift */,
 				F836C39F64DD26844E49447C /* DailyNotificationIntegrationTests.swift */,
+				BB2C3D4E5F6A7B8C9D0E1F2A /* ProgressResetBugFixTests.swift */,
 				B5813C9107BDB8A27A327AFD /* ScheduleNotificationsUseCaseTests.swift */,
 				AF3CD1E88265D343D4D079CF /* SelectDailyProblemsUseCaseTests.swift */,
 				A1B2C3D4E5F6A7B8C9D0E1F3 /* SM2AlgorithmEdgeCaseTests.swift */,
@@ -707,6 +712,7 @@
 			isa = PBXGroup;
 			children = (
 				E6B58E52B3366B0BD5C474F9 /* FirestoreModelsTests.swift */,
+				DD4E5F6A7B8C9D0E1F2A3B4C /* MigrateOrphanedDataTests.swift */,
 				94AC49CCF97875AF12BC38B7 /* NetworkMonitorTests.swift */,
 				BB22CC33DD44EE55FF667788 /* ProgressMapperTests.swift */,
 				DA8CBC060D48ACF24D5F902A /* SyncConflictResolutionTests.swift */,
@@ -853,11 +859,13 @@
 				1B15D951B7AC6EA40582BED6 /* AppleSignInTests.swift in Sources */,
 				0D5FB9ED49858AF64EF8C092 /* DailyNotificationIntegrationTests.swift in Sources */,
 				C5A1192359081CB6F13D8215 /* FirestoreModelsTests.swift in Sources */,
+				CC3D4E5F6A7B8C9D0E1F2A3B /* MigrateOrphanedDataTests.swift in Sources */,
 				QA17000000000000000001 /* MockChatRepository.swift in Sources */,
 				232D2DF3384F95D6471C96BC /* MockNotificationScheduler.swift in Sources */,
 				E600B6E46A5A85A8DA98BE37 /* MockProblemRepository.swift in Sources */,
 				ED0AE3B38BD276F77D8DA6F5 /* MockProgressRepository.swift in Sources */,
 				17E6BDC7DB38A4B45482542F /* NetworkMonitorTests.swift in Sources */,
+				AA1B2C3D4E5F6A7B8C9D0E1F /* ProgressResetBugFixTests.swift in Sources */,
 				F3E1D0C9B8A7F6E5C4B3A2D2 /* SM2AlgorithmEdgeCaseTests.swift in Sources */,
 				B6943355F31713CD81747E3F /* SM2AlgorithmTests.swift in Sources */,
 				767B73F7B4CE02692B192ABD /* ScheduleNotificationsUseCaseTests.swift in Sources */,
