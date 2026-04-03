@@ -65,14 +65,55 @@ final class AuthManager: ObservableObject {
         try await Auth.auth().signIn(with: credential)
     }
 
-    // MARK: - Apple Sign-In
+    // MARK: - Apple Sign-In (Native SignInWithAppleButton path)
 
+    // 💡 Two-step flow for SwiftUI's SignInWithAppleButton:
+    //    1. onRequest  → call prepareAppleSignIn() to get the hashed nonce
+    //    2. onCompletion → call completeAppleSignIn(credential:) with the result
+
+    /// Generates a fresh nonce, stores it, and returns its SHA256 hash
+    /// for the `onRequest` handler of `SignInWithAppleButton`.
+    func prepareAppleSignIn() -> String {
+        let nonce = randomNonceString()
+        currentNonce = nonce
+        return sha256(nonce)
+    }
+
+    /// Completes Apple Sign-In using the credential from `SignInWithAppleButton`'s `onCompletion`.
+    /// - Parameter credential: The Apple ID credential from a successful authorization.
+    func completeAppleSignIn(credential: ASAuthorizationAppleIDCredential) async throws {
+        // ⚠️ currentNonce must exist — it was set by prepareAppleSignIn() in onRequest.
+        guard let nonce = currentNonce else {
+            throw AuthError.missingAppleIDToken
+        }
+        defer { currentNonce = nil }
+
+        guard let idTokenData = credential.identityToken,
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
+            throw AuthError.missingAppleIDToken
+        }
+
+        let firebaseCredential = OAuthProvider.credential(
+            providerID: .apple,
+            idToken: idToken,
+            rawNonce: nonce
+        )
+        try await Auth.auth().signIn(with: firebaseCredential)
+    }
+
+    // MARK: - Apple Sign-In (ASAuthorizationController path — used by custom buttons)
+
+    /// Full Apple Sign-In flow via ASAuthorizationController + delegate.
+    /// Used when a custom button triggers sign-in (e.g., SettingsView).
     func signInWithApple() async throws {
         let nonce = randomNonceString()
         currentNonce = nonce
+        // 💡 defer ensures cleanup even if the continuation throws or the flow is cancelled.
+        defer {
+            _appleSignInDelegate = nil
+            currentNonce = nil
+        }
 
-        // 💡 withCheckedThrowingContinuation bridges the delegate callback to async/await.
-        //    AppleSignInDelegate holds the continuation and resumes it once Apple responds.
         let appleCredential: ASAuthorizationAppleIDCredential = try await withCheckedThrowingContinuation { continuation in
             let provider = ASAuthorizationAppleIDProvider()
             let request = provider.createRequest()
@@ -84,7 +125,9 @@ final class AuthManager: ObservableObject {
             let delegate = AppleSignInDelegate(continuation: continuation)
             let controller = ASAuthorizationController(authorizationRequests: [request])
             controller.delegate = delegate
-            // 💡 Retain delegate in a class property to prevent deallocation during callback
+            // 💡 presentationContextProvider tells iOS which window to anchor the sheet to.
+            //    Without it, behavior is undocumented on iOS 17+ and breaks in multi-scene apps.
+            controller.presentationContextProvider = self
             self._appleSignInDelegate = delegate
             controller.performRequests()
         }
@@ -99,8 +142,6 @@ final class AuthManager: ObservableObject {
             idToken: idToken,
             rawNonce: nonce
         )
-        // 💡 After this call, the auth state listener fires automatically —
-        //    no downstream changes needed (same as Google flow).
         try await Auth.auth().signIn(with: credential)
     }
 
@@ -130,6 +171,9 @@ enum AuthError: LocalizedError {
     case missingGoogleIDToken
     case appleSignInFailed(Error)
     case missingAppleIDToken
+    // 💡 Thrown when user taps Cancel on the Apple Sign-In sheet.
+    //    Callers should silently dismiss — this is not a real error.
+    case userCancelled
 
     var errorDescription: String? {
         switch self {
@@ -139,7 +183,26 @@ enum AuthError: LocalizedError {
             return "Apple Sign-In failed: \(error.localizedDescription)"
         case .missingAppleIDToken:
             return "Failed to obtain Apple ID token."
+        case .userCancelled:
+            return nil
         }
+    }
+}
+
+// MARK: - Presentation Context (for ASAuthorizationController)
+
+// 💡 Required by ASAuthorizationController to know which window to present the sign-in sheet.
+//    Only used by the signInWithApple() path (custom button in SettingsView).
+//    SignInWithAppleButton's native flow handles this automatically.
+extension AuthManager: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = scene.windows.first else {
+            // ⚠️ Fallback: create an empty window. In practice this path shouldn't hit
+            //    on a single-scene iOS app, but it satisfies the protocol requirement.
+            return ASPresentationAnchor()
+        }
+        return window
     }
 }
 
@@ -188,7 +251,13 @@ private final class AppleSignInDelegate: NSObject, ASAuthorizationControllerDele
 
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithError error: Error) {
-        continuation?.resume(throwing: AuthError.appleSignInFailed(error))
+        // ⚠️ ASAuthorizationError.canceled is normal user behavior (tapped Cancel),
+        //    not a real error — surface it as userCancelled so callers can silently dismiss.
+        if let authError = error as? ASAuthorizationError, authError.code == .canceled {
+            continuation?.resume(throwing: AuthError.userCancelled)
+        } else {
+            continuation?.resume(throwing: AuthError.appleSignInFailed(error))
+        }
         continuation = nil
     }
 }

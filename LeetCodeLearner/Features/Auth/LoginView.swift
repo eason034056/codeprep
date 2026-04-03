@@ -67,12 +67,38 @@ struct LoginView: View {
                     .padding(.horizontal, AppSpacing.xxxl)
 
                     // 💡 SignInWithAppleButton — Apple HIG mandates this native button
-                    //    for apps that offer third-party sign-in (App Store Guideline 4.8)
+                    //    for apps that offer third-party sign-in (App Store Guideline 4.8).
+                    //    onRequest sets the nonce; onCompletion completes the Firebase flow.
                     SignInWithAppleButton(.signIn) { request in
                         request.requestedScopes = [.fullName, .email]
-                    } onCompletion: { _ in
-                        // ⚠️ We don't use this completion — AuthManager handles the full flow
-                        //    via ASAuthorizationController directly. This button is purely visual.
+                        // 💡 prepareAppleSignIn() generates a nonce, stores it, and returns its SHA256 hash.
+                        //    Firebase will verify this hash matches the raw nonce during credential creation.
+                        request.nonce = authManager.prepareAppleSignIn()
+                    } onCompletion: { result in
+                        switch result {
+                        case .success(let authorization):
+                            guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+                                errorMessage = "Failed to obtain Apple ID credential."
+                                return
+                            }
+                            isSigningIn = true
+                            errorMessage = nil
+                            Task {
+                                do {
+                                    try await authManager.completeAppleSignIn(credential: credential)
+                                } catch {
+                                    errorMessage = error.localizedDescription
+                                }
+                                isSigningIn = false
+                            }
+                        case .failure(let error):
+                            // ⚠️ User tapping Cancel triggers ASAuthorizationError.canceled —
+                            //    this is normal behavior, not an error to display.
+                            if let authError = error as? ASAuthorizationError, authError.code == .canceled {
+                                return
+                            }
+                            errorMessage = error.localizedDescription
+                        }
                     }
                     .signInWithAppleButtonStyle(.white)
                     .frame(height: 50)
@@ -80,17 +106,6 @@ struct LoginView: View {
                     .padding(.horizontal, AppSpacing.xxxl)
                     .disabled(isSigningIn)
                     .opacity(isSigningIn ? 0.7 : 1)
-                    .overlay {
-                        // 💡 Overlay a transparent button to intercept taps and route to AuthManager.
-                        //    The native SignInWithAppleButton handles its own flow, but we need
-                        //    AuthManager's nonce-secured flow for Firebase integration.
-                        Button(action: signInApple) {
-                            Color.clear
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding(.horizontal, AppSpacing.xxxl)
-                        .disabled(isSigningIn)
-                    }
 
                     if let error = errorMessage {
                         Text(error)
@@ -127,17 +142,4 @@ struct LoginView: View {
         }
     }
 
-    private func signInApple() {
-        isSigningIn = true
-        errorMessage = nil
-
-        Task {
-            do {
-                try await authManager.signInWithApple()
-            } catch {
-                errorMessage = error.localizedDescription
-            }
-            isSigningIn = false
-        }
-    }
 }

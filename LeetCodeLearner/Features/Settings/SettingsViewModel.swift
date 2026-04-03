@@ -171,6 +171,8 @@ final class SettingsViewModel: ObservableObject {
         Task {
             do {
                 try await authManager.signInWithApple()
+            } catch AuthError.userCancelled {
+                // ⚠️ User tapped Cancel on Apple Sign-In sheet — silent dismiss, no error shown.
             } catch {
                 authErrorMessage = error.localizedDescription
             }
