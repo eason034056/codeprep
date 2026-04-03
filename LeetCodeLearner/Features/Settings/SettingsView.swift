@@ -59,6 +59,7 @@ struct SettingsView: View {
                                             .foregroundStyle(.white)
                                             .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
                                         }
+                                        .buttonStyle(.scalePress)
 
                                         // 💡 Custom-styled Apple button for Settings —
                                         //    Apple HIG allows custom styling on secondary screens
@@ -76,6 +77,7 @@ struct SettingsView: View {
                                             .foregroundStyle(.black)
                                             .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
                                         }
+                                        .buttonStyle(.scalePress)
 
                                         if let error = viewModel.authErrorMessage {
                                             Text(error)
@@ -121,6 +123,7 @@ struct SettingsView: View {
                                             .font(AppFont.headline)
                                             .frame(maxWidth: .infinity)
                                     }
+                                    .buttonStyle(.scalePress)
                                     .disabled(viewModel.apiKey.isEmpty)
                                     .accessibilityLabel("Save API key")
                                 }
@@ -182,6 +185,7 @@ struct SettingsView: View {
                                                     .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
                                                     .animation(.easeInOut(duration: 0.2), value: viewModel.showModelApplied)
                                                 }
+                                                .buttonStyle(.scalePress)
                                                 .disabled(viewModel.customModelText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                                             }
 
@@ -248,7 +252,7 @@ struct SettingsView: View {
                                             .foregroundStyle(.secondary)
                                     }
                                 }
-                                .buttonStyle(.plain)
+                                .buttonStyle(.scalePress)
                                 .accessibilityLabel("Export your data as JSON")
                             }
                             Divider().background(AppColor.surfaceElevated)
@@ -265,7 +269,7 @@ struct SettingsView: View {
                                         Spacer()
                                     }
                                 }
-                                .buttonStyle(.plain)
+                                .buttonStyle(.scalePress)
                                 .accessibilityLabel("Delete all app data")
                                 .accessibilityHint("Permanently removes all progress, chat history, and preferences")
                             }
@@ -420,7 +424,7 @@ struct ModelModeButton: View {
                 )
                 .clipShape(RoundedRectangle(cornerRadius: AppRadius.large - AppSpacing.xs))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.scalePress)
     }
 }
 
