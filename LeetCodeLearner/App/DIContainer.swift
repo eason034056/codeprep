@@ -108,6 +108,7 @@ final class DIContainer: ObservableObject {
                 self._currentUserId = nil
                 self._progressRepo = nil
                 self._chatRepo = nil
+                self._homeViewModel = nil   // Clear cached ViewModel so it rebuilds with new repos
 
                 if !newUserId.isEmpty {
                     self.syncService.start(userId: newUserId)
