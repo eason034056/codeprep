@@ -97,7 +97,7 @@ final class AuthManager: ObservableObject {
         let credential = OAuthProvider.credential(
             providerID: .apple,
             idToken: idToken,
-            rawNonce: currentNonce
+            rawNonce: nonce
         )
         // 💡 After this call, the auth state listener fires automatically —
         //    no downstream changes needed (same as Google flow).
