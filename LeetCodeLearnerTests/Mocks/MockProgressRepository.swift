@@ -14,6 +14,10 @@ final class MockProgressRepository: ProgressRepositoryProtocol, @unchecked Senda
     // MARK: - Tracking
 
     var saveDailyChallengeCallCount = 0
+    var updateProgressCallCount = 0
+    var lastProgressUpdate: UserProblemProgress?
+    var saveCardCallCount = 0
+    var lastSavedCard: SpacedRepetitionCard?
 
     // MARK: - UserProblemProgress
 
@@ -30,9 +34,11 @@ final class MockProgressRepository: ProgressRepositoryProtocol, @unchecked Senda
     }
 
     func updateProgress(problemId: Int, update: (inout UserProblemProgress) -> Void) {
+        updateProgressCallCount += 1
         if var progress = progressEntries[problemId] {
             update(&progress)
             progressEntries[problemId] = progress
+            lastProgressUpdate = progress
         }
     }
 
@@ -60,6 +66,8 @@ final class MockProgressRepository: ProgressRepositoryProtocol, @unchecked Senda
     }
 
     func saveCard(_ card: SpacedRepetitionCard) {
+        saveCardCallCount += 1
+        lastSavedCard = card
         if let index = cards.firstIndex(where: { $0.problemId == card.problemId }) {
             cards[index] = card
         } else {

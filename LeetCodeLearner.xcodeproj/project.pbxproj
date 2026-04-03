@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA11BB22CC33DD44EE55FF01 /* ReviewQueueViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE55FF66 /* ReviewQueueViewModelTests.swift */; };
+		BB22CC33DD44EE55FF667701 /* ProgressMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF667788 /* ProgressMapperTests.swift */; };
+		CC33DD44EE55FF6677889901 /* SpacedRepetitionLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC33DD44EE55FF66778899AA /* SpacedRepetitionLifecycleTests.swift */; };
 		053B5701240CB688B369141B /* MilestoneCelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399844283F65377B89E54177 /* MilestoneCelebrationView.swift */; };
 		087881F6EE084A7B02CFCA36 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B0E7BC5DD9604BD01A336E78 /* FirebaseAuth */; };
 		093CA814CF554B5D8111823B /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC9E136CE48B8F8537175A /* ConfettiView.swift */; };
@@ -82,6 +85,8 @@
 		B2FEE7DBD0E0D090CA77BEBF /* SDUserProblemProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7F96FA264FCAC665015C23 /* SDUserProblemProgress.swift */; };
 		B3F81DFBD26727314ED03892 /* SDChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175B883689B7FC1F32B1C9B4 /* SDChatMessage.swift */; };
 		B6943355F31713CD81747E3F /* SM2AlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E668979DFB67B7E3D9208C /* SM2AlgorithmTests.swift */; };
+		F2E1D0C9B8A7F6E5C4B3A2D1 /* UpdateSpacedRepetitionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4E5F6A7B8C9D0E1F2 /* UpdateSpacedRepetitionUseCaseTests.swift */; };
+		F3E1D0C9B8A7F6E5C4B3A2D2 /* SM2AlgorithmEdgeCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* SM2AlgorithmEdgeCaseTests.swift */; };
 		B83CD9F3217B2ACCC162F6A9 /* ProblemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD41DD9D34977247521069F /* ProblemStatus.swift */; };
 		B89ABC061882BFB0B3777C1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C3841C2685D65CD119F4EB /* AppDelegate.swift */; };
 		BA314C48184777A147F6D672 /* SendChatMessageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972420FAB0451A875722C79C /* SendChatMessageUseCase.swift */; };
@@ -131,7 +136,7 @@
 		012EC907A059881933D5296B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		01F4A0050F31B2278538DEFF /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		04DEFF9817E8AFEB20055EC3 /* LevelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelHeaderView.swift; sourceTree = "<group>"; };
-		0631673787E18F049543C957 /* LeetCodeLearner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LeetCodeLearner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0631673787E18F049543C957 /* LeetCodeLearner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetCodeLearner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		093E136FC87AD69E8D43D4AD /* LearningPathsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPathsViewModel.swift; sourceTree = "<group>"; };
 		0AFCD74A57C4CABF13D87E88 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0DB5B58CB46CCDBBAD08C3A5 /* SelectDailyProblemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDailyProblemsUseCase.swift; sourceTree = "<group>"; };
@@ -144,13 +149,18 @@
 		1FCC9E136CE48B8F8537175A /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		241B10AE63D2D6F3864F0BE4 /* LeetCodeLearner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LeetCodeLearner.entitlements; sourceTree = "<group>"; };
 		26E668979DFB67B7E3D9208C /* SM2AlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM2AlgorithmTests.swift; sourceTree = "<group>"; };
+		D1A2B3C4E5F6A7B8C9D0E1F2 /* UpdateSpacedRepetitionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSpacedRepetitionUseCaseTests.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F3 /* SM2AlgorithmEdgeCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM2AlgorithmEdgeCaseTests.swift; sourceTree = "<group>"; };
+		AA11BB22CC33DD44EE55FF66 /* ReviewQueueViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueViewModelTests.swift; sourceTree = "<group>"; };
+		BB22CC33DD44EE55FF667788 /* ProgressMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressMapperTests.swift; sourceTree = "<group>"; };
+		CC33DD44EE55FF66778899AA /* SpacedRepetitionLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedRepetitionLifecycleTests.swift; sourceTree = "<group>"; };
 		2DB760EB5352FC7EDCA80BDE /* LeetCodeLearnerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LeetCodeLearnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE4F97707426ACD3D6B35E2 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		31722715328D427B251CAD24 /* EvaluateUserApproachUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateUserApproachUseCase.swift; sourceTree = "<group>"; };
 		32E48CCA894057E850603718 /* GamifiedXPCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifiedXPCard.swift; sourceTree = "<group>"; };
 		357489ACDE30E5EF55A6CE63 /* ScheduleNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNotificationsUseCase.swift; sourceTree = "<group>"; };
 		3710FF9EB7DF3BADCFC80D4A /* GetLearningPathProgressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLearningPathProgressUseCase.swift; sourceTree = "<group>"; };
-		3774B1C37EF919994A4A5860 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		3774B1C37EF919994A4A5860 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		377962781F3F15BD82E1CD9B /* StreakCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCalculator.swift; sourceTree = "<group>"; };
 		399844283F65377B89E54177 /* MilestoneCelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCelebrationView.swift; sourceTree = "<group>"; };
 		3B2A046AACEBD688FF215B75 /* TypingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicatorView.swift; sourceTree = "<group>"; };
@@ -179,7 +189,7 @@
 		87C3D99C78633443447F254E /* ProblemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCardView.swift; sourceTree = "<group>"; };
 		8D31E6305D86586F76485949 /* ProblemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemMapper.swift; sourceTree = "<group>"; };
 		8E80FD895EACCCA32272C5E8 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
-		90F9CD2E6BFA5BE7BA13AF76 /* splash.mp4 */ = {isa = PBXFileReference; path = splash.mp4; sourceTree = "<group>"; };
+		90F9CD2E6BFA5BE7BA13AF76 /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		911D298841057F9B7F6211BE /* MarkdownContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContentView.swift; sourceTree = "<group>"; };
 		92769A0158C3BF86F7BB7BDA /* AnimationTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTokens.swift; sourceTree = "<group>"; };
 		92C3841C2685D65CD119F4EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -300,9 +310,18 @@
 			children = (
 				EFB3EB39FB82019D6C5A1E29 /* Data */,
 				A2DB35CC1436D87F66C10DC2 /* Domain */,
+				1122334455667788AABBCCDD /* Features */,
 				69D4C5D93E70C5766AF90587 /* Mocks */,
 			);
 			path = LeetCodeLearnerTests;
+			sourceTree = "<group>";
+		};
+		1122334455667788AABBCCDD /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				AA11BB22CC33DD44EE55FF66 /* ReviewQueueViewModelTests.swift */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 		20BF80780C175AD691FCA096 /* Onboarding */ = {
@@ -469,8 +488,11 @@
 				F836C39F64DD26844E49447C /* DailyNotificationIntegrationTests.swift */,
 				B5813C9107BDB8A27A327AFD /* ScheduleNotificationsUseCaseTests.swift */,
 				AF3CD1E88265D343D4D079CF /* SelectDailyProblemsUseCaseTests.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F3 /* SM2AlgorithmEdgeCaseTests.swift */,
 				26E668979DFB67B7E3D9208C /* SM2AlgorithmTests.swift */,
+				CC33DD44EE55FF66778899AA /* SpacedRepetitionLifecycleTests.swift */,
 				E5E405A94E81C2F8C734A8ED /* StreakCalculatorTests.swift */,
+				D1A2B3C4E5F6A7B8C9D0E1F2 /* UpdateSpacedRepetitionUseCaseTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -680,6 +702,7 @@
 			children = (
 				E6B58E52B3366B0BD5C474F9 /* FirestoreModelsTests.swift */,
 				94AC49CCF97875AF12BC38B7 /* NetworkMonitorTests.swift */,
+				BB22CC33DD44EE55FF667788 /* ProgressMapperTests.swift */,
 				DA8CBC060D48ACF24D5F902A /* SyncConflictResolutionTests.swift */,
 			);
 			path = Data;
@@ -777,8 +800,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1620;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E4869200B3E853A3F54F1075 /* Build configuration list for PBXProject "LeetCodeLearner" */;
 			developmentRegion = en;
@@ -830,12 +851,17 @@
 				E600B6E46A5A85A8DA98BE37 /* MockProblemRepository.swift in Sources */,
 				ED0AE3B38BD276F77D8DA6F5 /* MockProgressRepository.swift in Sources */,
 				17E6BDC7DB38A4B45482542F /* NetworkMonitorTests.swift in Sources */,
+				F3E1D0C9B8A7F6E5C4B3A2D2 /* SM2AlgorithmEdgeCaseTests.swift in Sources */,
 				B6943355F31713CD81747E3F /* SM2AlgorithmTests.swift in Sources */,
 				767B73F7B4CE02692B192ABD /* ScheduleNotificationsUseCaseTests.swift in Sources */,
+				F2E1D0C9B8A7F6E5C4B3A2D1 /* UpdateSpacedRepetitionUseCaseTests.swift in Sources */,
 				8D638F9CB67B7670C6780AE8 /* SelectDailyProblemsUseCaseTests.swift in Sources */,
 				A385048E9CFEE3DD1D5F6A0E /* StreakCalculatorTests.swift in Sources */,
 				D43C84FF8667A123C3341912 /* SyncConflictResolutionTests.swift in Sources */,
 				84FAE11BCD031ED43C9E6949 /* TestHelpers.swift in Sources */,
+				AA11BB22CC33DD44EE55FF01 /* ReviewQueueViewModelTests.swift in Sources */,
+				BB22CC33DD44EE55FF667701 /* ProgressMapperTests.swift in Sources */,
+				CC33DD44EE55FF6677889901 /* SpacedRepetitionLifecycleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,6 +1042,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LeetCodeLearner/Resources/LeetCodeLearner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6NM4RF95KN;
 				INFOPLIST_FILE = LeetCodeLearner/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1108,6 +1135,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LeetCodeLearner/Resources/LeetCodeLearner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6NM4RF95KN;
 				INFOPLIST_FILE = LeetCodeLearner/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
