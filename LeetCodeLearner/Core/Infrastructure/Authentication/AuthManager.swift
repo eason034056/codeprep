@@ -12,7 +12,7 @@ struct AuthenticatedUser: Sendable {
 }
 
 @MainActor
-final class AuthManager: ObservableObject {
+final class AuthManager: NSObject, ObservableObject {
     @Published private(set) var currentUser: AuthenticatedUser?
     @Published private(set) var isLoading: Bool = true
 
@@ -24,7 +24,8 @@ final class AuthManager: ObservableObject {
     //    Firebase uses it to verify the Apple credential wasn't replayed.
     private var currentNonce: String?
 
-    init() {
+    override init() {
+        super.init()
         authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] _, firebaseUser in
             Task { @MainActor in
                 guard let self else { return }

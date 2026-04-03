@@ -16,6 +16,7 @@
 		16EBB27CEDAD886F3C61CEA4 /* ProgressMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1A288674E0A47BAFE9D05 /* ProgressMapper.swift */; };
 		17E6BDC7DB38A4B45482542F /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC49CCF97875AF12BC38B7 /* NetworkMonitorTests.swift */; };
 		1A4321164A2BC74F85E76E72 /* ProblemRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EC296467640C97703DDF /* ProblemRepositoryProtocol.swift */; };
+		1B15D951B7AC6EA40582BED6 /* AppleSignInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A661EAD0DA8D3439C4BA42 /* AppleSignInTests.swift */; };
 		1BE8DE3A38E0F1F71581F066 /* OpenRouterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6A146CA1B7323F0C581E3D /* OpenRouterModels.swift */; };
 		1C3467812BB14DA29A3E9C3B /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E433FC22063E8B8746C16 /* Problem.swift */; };
 		1E1DFCA4294741541EF94B80 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4F97707426ACD3D6B35E2 /* ChatMessage.swift */; };
@@ -184,6 +185,7 @@
 		92C3841C2685D65CD119F4EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94AC49CCF97875AF12BC38B7 /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
 		95B720A610421843FFBC86BE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		96A661EAD0DA8D3439C4BA42 /* AppleSignInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInTests.swift; sourceTree = "<group>"; };
 		972420FAB0451A875722C79C /* SendChatMessageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendChatMessageUseCase.swift; sourceTree = "<group>"; };
 		9BCA377F8B9570730D8B9735 /* SDDailyChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDDailyChallenge.swift; sourceTree = "<group>"; };
 		9E6DF5E9DB36449BBF6C1597 /* ModelContainerSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerSetup.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 		A2DB35CC1436D87F66C10DC2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				96A661EAD0DA8D3439C4BA42 /* AppleSignInTests.swift */,
 				F836C39F64DD26844E49447C /* DailyNotificationIntegrationTests.swift */,
 				B5813C9107BDB8A27A327AFD /* ScheduleNotificationsUseCaseTests.swift */,
 				AF3CD1E88265D343D4D079CF /* SelectDailyProblemsUseCaseTests.swift */,
@@ -820,6 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B15D951B7AC6EA40582BED6 /* AppleSignInTests.swift in Sources */,
 				0D5FB9ED49858AF64EF8C092 /* DailyNotificationIntegrationTests.swift in Sources */,
 				C5A1192359081CB6F13D8215 /* FirestoreModelsTests.swift in Sources */,
 				232D2DF3384F95D6471C96BC /* MockNotificationScheduler.swift in Sources */,
@@ -1017,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeprep.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codereps.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1091,7 +1095,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeprep.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codereps.tests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeetCodeLearner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeetCodeLearner";
@@ -1109,7 +1113,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeprep.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codereps.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1124,7 +1128,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeprep.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codereps.tests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeetCodeLearner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeetCodeLearner";
