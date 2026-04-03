@@ -3,7 +3,7 @@ import Security
 
 final class APIKeyManager: Sendable {
     static let shared = APIKeyManager()
-    private let service = "com.codeprep.openrouter-api"
+    private let service = "com.codereps.openrouter-api"
     private let account = "api-key"
 
     private init() {}

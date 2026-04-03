@@ -1,6 +1,6 @@
 name: LeetCodeLearner
 options:
-  bundleIdPrefix: com.codeprep
+  bundleIdPrefix: com.codereps
   deploymentTarget:
     iOS: "17.0"
   xcodeVersion: "16.2"
@@ -36,12 +36,12 @@ targets:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
         UILaunchScreen: {}
-        CFBundleDisplayName: "CodePrep"
+        CFBundleDisplayName: "CodeReps"
         UISupportedInterfaceOrientations~iphone:
           - UIInterfaceOrientationPortrait
         CFBundleURLTypes:
           - CFBundleURLSchemes:
-              - "com.googleusercontent.apps.540758161069-oo1tr22503qhi9ak7gfjqadhnpverour"
+              - "com.googleusercontent.apps.540758161069-oob8ron8lfmsdr3eir04htldc07ei6l9"
     dependencies:
       - package: GoogleSignIn
         product: GoogleSignIn
@@ -53,7 +53,7 @@ targets:
         product: FirebaseFirestore
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.codeprep.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.codereps.app
         CODE_SIGN_ENTITLEMENTS: LeetCodeLearner/Resources/LeetCodeLearner.entitlements
 
   LeetCodeLearnerTests:
@@ -65,7 +65,7 @@ targets:
       - target: LeetCodeLearner
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.codeprep.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.codereps.tests
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/LeetCodeLearner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeetCodeLearner"
         BUNDLE_LOADER: "$(TEST_HOST)"
 

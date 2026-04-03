@@ -60,6 +60,23 @@ struct SettingsView: View {
                                             .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
                                         }
 
+                                        // 💡 Custom-styled Apple button for Settings —
+                                        //    Apple HIG allows custom styling on secondary screens
+                                        //    (native button only required on primary login screen).
+                                        Button(action: { viewModel.signInWithApple() }) {
+                                            HStack(spacing: AppSpacing.md) {
+                                                Image(systemName: "apple.logo")
+                                                    .font(.system(size: 20))
+                                                Text("Continue with Apple")
+                                                    .font(AppFont.headline)
+                                            }
+                                            .frame(maxWidth: .infinity)
+                                            .padding(.vertical, AppSpacing.md)
+                                            .background(Color.white)
+                                            .foregroundStyle(.black)
+                                            .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
+                                        }
+
                                         if let error = viewModel.authErrorMessage {
                                             Text(error)
                                                 .font(AppFont.caption)
@@ -257,7 +274,7 @@ struct SettingsView: View {
                         // Legal
                         SettingsSection(title: "Legal") {
                             SettingsRow {
-                                Link(destination: URL(string: "https://eason034056.github.io/codeprep/privacy.html")!) {
+                                Link(destination: URL(string: "https://eason034056.github.io/codereps/privacy.html")!) {
                                     HStack {
                                         Image(systemName: "hand.raised")
                                             .foregroundStyle(AppColor.accent)
@@ -273,7 +290,7 @@ struct SettingsView: View {
                             }
                             Divider().background(AppColor.surfaceElevated)
                             SettingsRow {
-                                Link(destination: URL(string: "https://eason034056.github.io/codeprep/terms.html")!) {
+                                Link(destination: URL(string: "https://eason034056.github.io/codereps/terms.html")!) {
                                     HStack {
                                         Image(systemName: "doc.text")
                                             .foregroundStyle(AppColor.accent)

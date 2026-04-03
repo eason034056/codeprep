@@ -78,7 +78,7 @@ struct OnboardingView: View {
                     .padding(.bottom, AppSpacing.sm)
 
                 // Title
-                Text("CodePrep")
+                Text("CodeReps")
                     .font(AppFont.largeTitle)
                     .foregroundStyle(AppColor.accentGradient)
 

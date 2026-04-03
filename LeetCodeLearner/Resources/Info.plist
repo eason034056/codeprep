@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>CodePrep</string>
+	<string>CodeReps</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.540758161069-oo1tr22503qhi9ak7gfjqadhnpverour</string>
+				<string>com.googleusercontent.apps.540758161069-oob8ron8lfmsdr3eir04htldc07ei6l9</string>
 			</array>
 		</dict>
 	</array>

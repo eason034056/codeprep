@@ -21,7 +21,7 @@ final class ScheduleNotificationsUseCase {
         for (dayOffset, challenge) in dailyChallenges.enumerated() {
             for (slotIndex, time) in times.prefix(3).enumerated() {
                 let problem = slotIndex < challenge.problems.count ? challenge.problems[slotIndex] : nil
-                let title = "CodePrep Time!"
+                let title = "CodeReps Time!"
                 let body: String
                 if let problem = problem {
                     body = "\(problem.title) (\(problem.difficulty.rawValue)) - \(problem.topic.rawValue)"
