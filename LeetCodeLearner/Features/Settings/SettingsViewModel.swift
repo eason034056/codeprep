@@ -166,6 +166,17 @@ final class SettingsViewModel: ObservableObject {
         }
     }
 
+    func signInWithApple() {
+        authErrorMessage = nil
+        Task {
+            do {
+                try await authManager.signInWithApple()
+            } catch {
+                authErrorMessage = error.localizedDescription
+            }
+        }
+    }
+
     func signOut() {
         authManager.signOut()
     }
@@ -225,7 +236,7 @@ final class SettingsViewModel: ObservableObject {
         // Write to temp file
         do {
             let data = try JSONSerialization.data(withJSONObject: exportDict, options: [.prettyPrinted, .sortedKeys])
-            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("CodePrep_Export.json")
+            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("CodeReps_Export.json")
             try data.write(to: tempURL)
             exportFileURL = tempURL
             showExportSheet = true
