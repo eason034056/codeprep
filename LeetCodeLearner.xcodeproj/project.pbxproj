@@ -71,6 +71,7 @@
 		9E03AE3FB13AA7EC118CF9A3 /* ChatSystemPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06566920A3D5899D80209F /* ChatSystemPrompts.swift */; };
 		A15E9EE2CD6AD8B60BCA6A97 /* DailyChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E80ED08A17E4B7E0ECF7092 /* DailyChallenge.swift */; };
 		A385048E9CFEE3DD1D5F6A0E /* StreakCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E405A94E81C2F8C734A8ED /* StreakCalculatorTests.swift */; };
+		QA10000000000000000001 /* StreakCountingAfterUMPIRETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = QA10000000000000000002 /* StreakCountingAfterUMPIRETests.swift */; };
 		A3A43848677AF9715E3DCDD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F920962494A0997C41EA6000 /* GoogleService-Info.plist */; };
 		A3B3333D13093B35883E0363 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE7FB74D5FBB71EF61D930 /* Difficulty.swift */; };
 		A3E574370E8EA468FE7025F4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B720A610421843FFBC86BE /* HomeView.swift */; };
@@ -110,6 +111,7 @@
 		E2C703388F773F1BB99237D6 /* TypingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A046AACEBD688FF215B75 /* TypingIndicatorView.swift */; };
 		E3C19A44B65ED8498091697C /* UserProblemProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2810836D39E12FBA7DD0ACD /* UserProblemProgress.swift */; };
 		E600B6E46A5A85A8DA98BE37 /* MockProblemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7F8925432169CF4814BF1 /* MockProblemRepository.swift */; };
+		QA17000000000000000001 /* MockChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = QA17000000000000000002 /* MockChatRepository.swift */; };
 		EAD18D6094FCCFFF50F52130 /* EvaluateUserApproachUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31722715328D427B251CAD24 /* EvaluateUserApproachUseCase.swift */; };
 		ED0AE3B38BD276F77D8DA6F5 /* MockProgressRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1AD93E21B9BB3695238AE /* MockProgressRepository.swift */; };
 		EE486808BD6D7041647B3B03 /* ProblemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3D99C78633443447F254E /* ProblemCardView.swift */; };
@@ -202,6 +204,7 @@
 		A1E013CCBD8FA2DE3166948D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A2810836D39E12FBA7DD0ACD /* UserProblemProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProblemProgress.swift; sourceTree = "<group>"; };
 		A2E7F8925432169CF4814BF1 /* MockProblemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProblemRepository.swift; sourceTree = "<group>"; };
+		QA17000000000000000002 /* MockChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatRepository.swift; sourceTree = "<group>"; };
 		A3AC3F8E5E94490AA81C44AC /* SDProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDProblem.swift; sourceTree = "<group>"; };
 		A8C6E4712AED303CEF599A16 /* CodeBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBlockView.swift; sourceTree = "<group>"; };
 		A8E14CF0703B5EED2F3CE90A /* LeetCodeLearnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetCodeLearnerApp.swift; sourceTree = "<group>"; };
@@ -230,6 +233,7 @@
 		DE88573BFFABF6A503F6EDB3 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		E0459A5E2019CE25B8CFFD1F /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		E5E405A94E81C2F8C734A8ED /* StreakCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCalculatorTests.swift; sourceTree = "<group>"; };
+		QA10000000000000000002 /* StreakCountingAfterUMPIRETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCountingAfterUMPIRETests.swift; sourceTree = "<group>"; };
 		E6B58E52B3366B0BD5C474F9 /* FirestoreModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreModelsTests.swift; sourceTree = "<group>"; };
 		EA6A146CA1B7323F0C581E3D /* OpenRouterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRouterModels.swift; sourceTree = "<group>"; };
 		EAA10B56A64FE88C7F09F003 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 		69D4C5D93E70C5766AF90587 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				QA17000000000000000002 /* MockChatRepository.swift */,
 				ED5101DFB760A110AF2513B7 /* MockNotificationScheduler.swift */,
 				A2E7F8925432169CF4814BF1 /* MockProblemRepository.swift */,
 				62E1AD93E21B9BB3695238AE /* MockProgressRepository.swift */,
@@ -491,6 +496,7 @@
 				A1B2C3D4E5F6A7B8C9D0E1F3 /* SM2AlgorithmEdgeCaseTests.swift */,
 				26E668979DFB67B7E3D9208C /* SM2AlgorithmTests.swift */,
 				CC33DD44EE55FF66778899AA /* SpacedRepetitionLifecycleTests.swift */,
+				QA10000000000000000002 /* StreakCountingAfterUMPIRETests.swift */,
 				E5E405A94E81C2F8C734A8ED /* StreakCalculatorTests.swift */,
 				D1A2B3C4E5F6A7B8C9D0E1F2 /* UpdateSpacedRepetitionUseCaseTests.swift */,
 			);
@@ -847,6 +853,7 @@
 				1B15D951B7AC6EA40582BED6 /* AppleSignInTests.swift in Sources */,
 				0D5FB9ED49858AF64EF8C092 /* DailyNotificationIntegrationTests.swift in Sources */,
 				C5A1192359081CB6F13D8215 /* FirestoreModelsTests.swift in Sources */,
+				QA17000000000000000001 /* MockChatRepository.swift in Sources */,
 				232D2DF3384F95D6471C96BC /* MockNotificationScheduler.swift in Sources */,
 				E600B6E46A5A85A8DA98BE37 /* MockProblemRepository.swift in Sources */,
 				ED0AE3B38BD276F77D8DA6F5 /* MockProgressRepository.swift in Sources */,
@@ -857,6 +864,7 @@
 				F2E1D0C9B8A7F6E5C4B3A2D1 /* UpdateSpacedRepetitionUseCaseTests.swift in Sources */,
 				8D638F9CB67B7670C6780AE8 /* SelectDailyProblemsUseCaseTests.swift in Sources */,
 				A385048E9CFEE3DD1D5F6A0E /* StreakCalculatorTests.swift in Sources */,
+				QA10000000000000000001 /* StreakCountingAfterUMPIRETests.swift in Sources */,
 				D43C84FF8667A123C3341912 /* SyncConflictResolutionTests.swift in Sources */,
 				84FAE11BCD031ED43C9E6949 /* TestHelpers.swift in Sources */,
 				AA11BB22CC33DD44EE55FF01 /* ReviewQueueViewModelTests.swift in Sources */,

@@ -33,6 +33,7 @@ final class EvaluateUserApproachUseCase {
     /// Mark that the full UMPIRE solution was delivered
     func markUMPIRESolutionDelivered(problemId: Int) {
         progressRepo.updateProgress(problemId: problemId) { progress in
+            progress.lastAttemptDate = Date()  // Fix: record solve date for streak counting
             progress.umpireSolutionUnlocked = true
             if progress.status == .unseen || progress.status == .attempted {
                 progress.status = .solvedWithHelp
