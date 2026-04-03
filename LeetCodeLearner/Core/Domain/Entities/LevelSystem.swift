@@ -15,7 +15,7 @@ enum LevelSystem {
         PlayerLevel(level: 4, title: "Algorithm Pro", xpFloor: 600, xpCeiling: 1000),
         PlayerLevel(level: 5, title: "Code Master", xpFloor: 1000, xpCeiling: 1500),
         PlayerLevel(level: 6, title: "Elite Coder", xpFloor: 1500, xpCeiling: 2000),
-        PlayerLevel(level: 7, title: "CodePrep Legend", xpFloor: 2000, xpCeiling: Int.max),
+        PlayerLevel(level: 7, title: "CodeReps Legend", xpFloor: 2000, xpCeiling: Int.max),
     ]
 
     static func level(for xp: Int) -> PlayerLevel {
