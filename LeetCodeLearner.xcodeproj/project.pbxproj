@@ -143,7 +143,7 @@
 		01F4A0050F31B2278538DEFF /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		04ACAC6976405B1B868437F2 /* UpdateSpacedRepetitionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSpacedRepetitionUseCaseTests.swift; sourceTree = "<group>"; };
 		04DEFF9817E8AFEB20055EC3 /* LevelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelHeaderView.swift; sourceTree = "<group>"; };
-		0631673787E18F049543C957 /* LeetCodeLearner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LeetCodeLearner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0631673787E18F049543C957 /* LeetCodeLearner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetCodeLearner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		093E136FC87AD69E8D43D4AD /* LearningPathsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPathsViewModel.swift; sourceTree = "<group>"; };
 		0AFCD74A57C4CABF13D87E88 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0DB5B58CB46CCDBBAD08C3A5 /* SelectDailyProblemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDailyProblemsUseCase.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		32E48CCA894057E850603718 /* GamifiedXPCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifiedXPCard.swift; sourceTree = "<group>"; };
 		357489ACDE30E5EF55A6CE63 /* ScheduleNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNotificationsUseCase.swift; sourceTree = "<group>"; };
 		3710FF9EB7DF3BADCFC80D4A /* GetLearningPathProgressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLearningPathProgressUseCase.swift; sourceTree = "<group>"; };
-		3774B1C37EF919994A4A5860 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		3774B1C37EF919994A4A5860 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		377962781F3F15BD82E1CD9B /* StreakCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCalculator.swift; sourceTree = "<group>"; };
 		399844283F65377B89E54177 /* MilestoneCelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCelebrationView.swift; sourceTree = "<group>"; };
 		39FB51498C9B8B154C4611A5 /* SM2AlgorithmEdgeCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM2AlgorithmEdgeCaseTests.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		87C3D99C78633443447F254E /* ProblemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCardView.swift; sourceTree = "<group>"; };
 		8D31E6305D86586F76485949 /* ProblemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemMapper.swift; sourceTree = "<group>"; };
 		8E80FD895EACCCA32272C5E8 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
-		90F9CD2E6BFA5BE7BA13AF76 /* splash.mp4 */ = {isa = PBXFileReference; path = splash.mp4; sourceTree = "<group>"; };
+		90F9CD2E6BFA5BE7BA13AF76 /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		911D298841057F9B7F6211BE /* MarkdownContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContentView.swift; sourceTree = "<group>"; };
 		92769A0158C3BF86F7BB7BDA /* AnimationTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTokens.swift; sourceTree = "<group>"; };
 		92C3841C2685D65CD119F4EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -794,8 +794,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1620;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E4869200B3E853A3F54F1075 /* Build configuration list for PBXProject "LeetCodeLearner" */;
 			developmentRegion = en;
@@ -1044,6 +1042,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LeetCodeLearner/Resources/LeetCodeLearner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6NM4RF95KN;
 				INFOPLIST_FILE = LeetCodeLearner/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1136,6 +1135,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LeetCodeLearner/Resources/LeetCodeLearner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6NM4RF95KN;
 				INFOPLIST_FILE = LeetCodeLearner/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
