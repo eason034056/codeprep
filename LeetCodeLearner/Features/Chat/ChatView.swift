@@ -202,9 +202,22 @@ struct ChatView: View {
             Button {
                 viewModel.sendMessage()
             } label: {
-                Image(systemName: "arrow.up.circle.fill")
-                    .font(.system(size: 32))
-                    .foregroundStyle(canSend ? AppColor.accent : Color.gray.opacity(0.3))
+                // 💡 Crossfade between send arrow and spinner —
+                //    spinner shows only in the pre-stream window (waiting for first chunk).
+                Group {
+                    if viewModel.isStreaming && viewModel.streamingText.isEmpty {
+                        ProgressView()
+                            .tint(AppColor.accent)
+                            .frame(width: 32, height: 32)
+                            .transition(.opacity)
+                    } else {
+                        Image(systemName: "arrow.up.circle.fill")
+                            .font(.system(size: 32))
+                            .foregroundStyle(canSend ? AppColor.accent : Color.gray.opacity(0.3))
+                            .transition(.opacity)
+                    }
+                }
+                .animation(.easeInOut(duration: 0.25), value: viewModel.isStreaming && viewModel.streamingText.isEmpty)
             }
             .disabled(!canSend)
             .accessibilityLabel("Send message")

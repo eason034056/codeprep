@@ -63,7 +63,7 @@ final class DIContainer: ObservableObject {
     }
 
     var evaluateApproach: EvaluateUserApproachUseCase {
-        EvaluateUserApproachUseCase(chatRepo: chatRepo, progressRepo: progressRepo)
+        EvaluateUserApproachUseCase(chatRepo: chatRepo, progressRepo: progressRepo, sm2: sm2)
     }
 
     var scheduleNotifications: ScheduleNotificationsUseCase {
@@ -108,6 +108,7 @@ final class DIContainer: ObservableObject {
                 self._currentUserId = nil
                 self._progressRepo = nil
                 self._chatRepo = nil
+                self._homeViewModel = nil   // Clear cached ViewModel so it rebuilds with new repos
 
                 if !newUserId.isEmpty {
                     self.syncService.start(userId: newUserId)
@@ -138,6 +139,7 @@ final class DIContainer: ObservableObject {
             // Migrate orphaned data on first sign-in
             if !uid.isEmpty {
                 migrateOrphanedDataIfNeeded(userId: uid)
+                backfillMissingCardsIfNeeded()
             }
         }
     }
@@ -151,6 +153,27 @@ final class DIContainer: ObservableObject {
             toUserId: userId
         )
         UserDefaults.standard.set(true, forKey: migrationKey)
+    }
+
+    /// Backfill SR cards for solved problems that were completed before COD-26 fix.
+    /// Scans all progress with solvedWithHelp/solvedIndependently and creates
+    /// missing SpacedRepetitionCards so they enter the review queue.
+    private func backfillMissingCardsIfNeeded() {
+        guard let repo = _progressRepo else { return }
+
+        let allProgress = repo.getAllProgress()
+        for progress in allProgress {
+            // 💡 Only backfill for solved problems that have no card yet
+            guard progress.status == .solvedWithHelp || progress.status == .solvedIndependently,
+                  repo.getCard(for: progress.problemId) == nil else { continue }
+
+            // ⚠️ Use quality 3 (solvedWithHelp) or 4 (solvedIndependently)
+            //    to match the same mapping in EvaluateUserApproachUseCase
+            let quality = progress.status == .solvedIndependently ? 4 : 3
+            var card = repo.getOrCreateCard(for: progress.problemId)
+            card = sm2.update(card: card, quality: quality)
+            repo.saveCard(card)
+        }
     }
 
     // MARK: - ViewModel Factories
