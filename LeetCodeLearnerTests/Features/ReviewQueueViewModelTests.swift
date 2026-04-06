@@ -111,6 +111,172 @@ final class ReviewQueueViewModelTests: XCTestCase {
         XCTAssertTrue(sut.isComplete)
     }
 
+    // MARK: - loadWeeklyCards
+
+    func test_loadWeeklyCards_excludesTodayDueCards() {
+        // Arrange: card due today + card due tomorrow
+        let calendar = Calendar.current
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())!
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 1, nextReviewDate: yesterday),
+            TestHelpers.makeCard(problemId: 2, nextReviewDate: tomorrow)
+        ]
+        problemRepo.problems = [
+            TestHelpers.makeProblem(id: 1, title: "Two Sum"),
+            TestHelpers.makeProblem(id: 2, title: "Valid Parentheses")
+        ]
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert: today's card (problemId 1) should NOT appear in weeklyGroups
+        let weeklyProblemIds = sut.weeklyGroups.flatMap { $0.cards.map { $0.0.problemId } }
+        XCTAssertFalse(weeklyProblemIds.contains(1), "Today's due cards should be excluded from weekly groups")
+        XCTAssertTrue(weeklyProblemIds.contains(2), "Tomorrow's card should appear in weekly groups")
+    }
+
+    func test_loadWeeklyCards_groupsByDay_sortedAscending() {
+        // Arrange: cards on two different future days
+        let calendar = Calendar.current
+        let twoDaysLater = calendar.date(byAdding: .day, value: 2, to: Date())!
+        let oneDayLater = calendar.date(byAdding: .day, value: 1, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 10, nextReviewDate: twoDaysLater),
+            TestHelpers.makeCard(problemId: 20, nextReviewDate: oneDayLater),
+            TestHelpers.makeCard(problemId: 30, nextReviewDate: oneDayLater)
+        ]
+        problemRepo.problems = [
+            TestHelpers.makeProblem(id: 10, title: "Problem A"),
+            TestHelpers.makeProblem(id: 20, title: "Problem B"),
+            TestHelpers.makeProblem(id: 30, title: "Problem C")
+        ]
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert: groups sorted ascending, first group has 2 cards (tomorrow)
+        XCTAssertGreaterThanOrEqual(sut.weeklyGroups.count, 1)
+        if sut.weeklyGroups.count >= 2 {
+            XCTAssertTrue(sut.weeklyGroups[0].date < sut.weeklyGroups[1].date,
+                         "Groups should be sorted by date ascending")
+            XCTAssertEqual(sut.weeklyGroups[0].cards.count, 2, "Tomorrow should have 2 cards")
+            XCTAssertEqual(sut.weeklyGroups[1].cards.count, 1, "Day after should have 1 card")
+        }
+    }
+
+    func test_loadWeeklyCards_noCards_emptyGroups() {
+        // Arrange: no cards at all
+        progressRepo.cards = []
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert
+        XCTAssertTrue(sut.weeklyGroups.isEmpty)
+        XCTAssertEqual(sut.weeklyTotalCount, 0)
+    }
+
+    func test_loadWeeklyCards_onlyTodayCards_emptyWeeklyGroups() {
+        // Arrange: only today's overdue cards, nothing in future
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 1, nextReviewDate: yesterday)
+        ]
+        problemRepo.problems = [TestHelpers.makeProblem(id: 1)]
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert: today's card goes to dueCards, weeklyGroups should be empty
+        XCTAssertEqual(sut.dueCards.count, 1)
+        XCTAssertTrue(sut.weeklyGroups.isEmpty, "Only today's cards — no future weekly groups")
+        XCTAssertEqual(sut.weeklyTotalCount, 0)
+    }
+
+    func test_loadWeeklyCards_totalCountMatchesSumOfGroupCards() {
+        // Arrange
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let dayAfter = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 1, nextReviewDate: tomorrow),
+            TestHelpers.makeCard(problemId: 2, nextReviewDate: tomorrow),
+            TestHelpers.makeCard(problemId: 3, nextReviewDate: dayAfter)
+        ]
+        problemRepo.problems = [
+            TestHelpers.makeProblem(id: 1),
+            TestHelpers.makeProblem(id: 2),
+            TestHelpers.makeProblem(id: 3)
+        ]
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert
+        let sumFromGroups = sut.weeklyGroups.reduce(0) { $0 + $1.cards.count }
+        XCTAssertEqual(sut.weeklyTotalCount, sumFromGroups)
+        XCTAssertEqual(sut.weeklyTotalCount, 3)
+    }
+
+    func test_loadWeeklyCards_cardWithMissingProblem_skipped() {
+        // Arrange: card exists but problem doesn't
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 999, nextReviewDate: tomorrow)
+        ]
+        problemRepo.problems = [] // no matching problem
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert: card is skipped because problem can't be resolved
+        XCTAssertTrue(sut.weeklyGroups.isEmpty)
+        XCTAssertEqual(sut.weeklyTotalCount, 0)
+    }
+
+    func test_loadWeeklyCards_cardsAfterWeekEnd_excluded() {
+        // Arrange: card far in the future (next month)
+        let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 1, nextReviewDate: nextMonth)
+        ]
+        problemRepo.problems = [TestHelpers.makeProblem(id: 1)]
+
+        // Act
+        sut.loadDueCards()
+
+        // Assert: next month's card should not be in this week's groups
+        XCTAssertTrue(sut.weeklyGroups.isEmpty,
+                     "Cards beyond end of week should be excluded")
+        XCTAssertEqual(sut.weeklyTotalCount, 0)
+    }
+
+    func test_loadWeeklyCards_completingFlashcards_weeklyStillPresent() {
+        // Arrange: today's card + tomorrow's card
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        progressRepo.cards = [
+            TestHelpers.makeCard(problemId: 1, nextReviewDate: yesterday),
+            TestHelpers.makeCard(problemId: 2, nextReviewDate: tomorrow)
+        ]
+        progressRepo.progressEntries[1] = TestHelpers.makeProgress(problemId: 1)
+        problemRepo.problems = [
+            TestHelpers.makeProblem(id: 1),
+            TestHelpers.makeProblem(id: 2)
+        ]
+        sut.loadDueCards()
+        XCTAssertEqual(sut.weeklyTotalCount, 1) // tomorrow's card
+
+        // Act: complete today's flashcard
+        sut.rateCard(quality: 5)
+
+        // Assert: weekly groups remain after completing flashcard
+        // ⚠️ Note: rateCard doesn't re-invoke loadWeeklyCards,
+        //    so weeklyGroups persist after completion.
+        XCTAssertTrue(sut.isComplete)
+        XCTAssertEqual(sut.weeklyTotalCount, 1, "Weekly schedule should persist after completing flashcards")
+    }
+
     func testDueCards_orderedByNextReviewDate_mostOverdueFirst() {
         // Arrange: cards with different overdue dates
         let twoDaysAgo = Calendar.current.date(byAdding: .day, value: -2, to: Date())!
