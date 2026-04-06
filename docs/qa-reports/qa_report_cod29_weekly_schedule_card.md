@@ -3,10 +3,10 @@
 **Date:** 2026-04-06
 **QA Engineer:** Sentinel (QA Engineer)
 **Branch:** `feature/COD-29-weekly-schedule-card`
-**Commit:** `6b80c79`
+**Commit:** `6b80c79` (impl), `b56b2a0` (bug fix)
 **Parent Task:** COD-29 (Plan: Weekly Review Schedule)
-**Implementation Task:** COD-31
-**Status:** PARTIAL PASS — 168/168 tests, 0 failures, 3 bugs found
+**Implementation Task:** COD-31, COD-34 (bug fix)
+**Status:** PASS — 168/168 tests, 0 failures, 3 bugs found and fixed
 
 ---
 
@@ -162,10 +162,19 @@ COD-31 implements a collapsible weekly review schedule card above the flashcard 
 
 ## Verdict
 
-**PARTIAL PASS** — The core implementation is solid and well-structured. 3 bugs found:
-- 1 Major (Scenario 7 fails — weekly card invisible when only today has cards)
-- 2 Minor (emptyView text, totalCount semantics)
+**PASS** — All 7 scenarios verified. 3 bugs were found during initial QA and subsequently fixed in COD-34 (`b56b2a0`).
 
-All bugs stem from a single root cause: `weeklyTotalCount` definition deviates from the plan (excludes today's count). Fixing Bug #1 would likely resolve Bugs #2 and #3 as a side effect.
+---
 
-**Recommendation:** Fix Bug #1 before merge. Bugs #2 and #3 are low priority but should be addressed in the same pass.
+## Bug Fix Verification (COD-34)
+
+Commit `b56b2a0` addressed all 3 bugs. Re-verification results:
+
+| Bug | Fix | Verified |
+|-----|-----|----------|
+| #1 (Major): Weekly card hidden when only today has cards | `weeklyTotalCount` now includes `dueCards.count` | PASS — Scenario 7 now works |
+| #2 (Minor): emptyView text not contextual | Conditional text in `emptyView` based on `!weeklyGroups.isEmpty` | PASS |
+| #3 (Minor): Header count excludes today | Fixed by Bug #1 — count is now accurate | PASS |
+
+- Tests updated to reflect new `weeklyTotalCount` semantics
+- Full suite: **168/168 tests pass, 0 failures, 0 regressions**
