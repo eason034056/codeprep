@@ -189,6 +189,7 @@ final class DIContainer: ObservableObject {
             learningPathProgress: learningPathProgress
         )
         vm.learningPath = selectedLearningPath
+        vm.loadDailyProblems()  // ⚠️ Pre-load so data is ready even if .onAppear doesn't re-fire after auth
         _homeViewModel = vm
         return vm
     }
