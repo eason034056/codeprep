@@ -177,7 +177,7 @@ final class ReviewQueueViewModelTests: XCTestCase {
         XCTAssertEqual(sut.weeklyTotalCount, 0)
     }
 
-    func test_loadWeeklyCards_onlyTodayCards_emptyWeeklyGroups() {
+    func test_loadWeeklyCards_onlyTodayCards_weeklyGroupsEmptyButTotalIncludesToday() {
         // Arrange: only today's overdue cards, nothing in future
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         progressRepo.cards = [
@@ -188,10 +188,10 @@ final class ReviewQueueViewModelTests: XCTestCase {
         // Act
         sut.loadDueCards()
 
-        // Assert: today's card goes to dueCards, weeklyGroups should be empty
+        // Assert: today's card goes to dueCards, weeklyGroups empty but totalCount includes today
         XCTAssertEqual(sut.dueCards.count, 1)
         XCTAssertTrue(sut.weeklyGroups.isEmpty, "Only today's cards — no future weekly groups")
-        XCTAssertEqual(sut.weeklyTotalCount, 0)
+        XCTAssertEqual(sut.weeklyTotalCount, 1, "weeklyTotalCount includes today's due cards")
     }
 
     func test_loadWeeklyCards_totalCountMatchesSumOfGroupCards() {
@@ -265,16 +265,17 @@ final class ReviewQueueViewModelTests: XCTestCase {
             TestHelpers.makeProblem(id: 2)
         ]
         sut.loadDueCards()
-        XCTAssertEqual(sut.weeklyTotalCount, 1) // tomorrow's card
+        // weeklyTotalCount = 1 future card + 1 today's due card = 2
+        XCTAssertEqual(sut.weeklyTotalCount, 2)
 
         // Act: complete today's flashcard
         sut.rateCard(quality: 5)
 
         // Assert: weekly groups remain after completing flashcard
         // ⚠️ Note: rateCard doesn't re-invoke loadWeeklyCards,
-        //    so weeklyGroups persist after completion.
+        //    so weeklyGroups and weeklyTotalCount persist after completion.
         XCTAssertTrue(sut.isComplete)
-        XCTAssertEqual(sut.weeklyTotalCount, 1, "Weekly schedule should persist after completing flashcards")
+        XCTAssertEqual(sut.weeklyTotalCount, 2, "Weekly schedule should persist after completing flashcards")
     }
 
     func testDueCards_orderedByNextReviewDate_mostOverdueFirst() {
