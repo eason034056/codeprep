@@ -7,26 +7,41 @@ struct ReviewQueueView: View {
 
     var body: some View {
         ZStack {
-            Group {
-                    if viewModel.isComplete {
-                        completedView
-                    } else if let card = viewModel.currentCard,
-                              let problem = viewModel.problemFor(card: card) {
-                        cardReviewView(card: card, problem: problem)
-                    } else {
-                        emptyView
+            ScrollView {
+                VStack(spacing: AppSpacing.lg) {
+                    // 💡 Weekly schedule card — sits above flashcard flow, hidden when no future cards
+                    if viewModel.weeklyTotalCount > 0 {
+                        WeeklyScheduleCard(
+                            weeklyGroups: viewModel.weeklyGroups,
+                            totalCount: viewModel.weeklyTotalCount
+                        )
+                        .padding(.horizontal, AppSpacing.lg)
+                    }
+
+                    // Main review content
+                    Group {
+                        if viewModel.isComplete {
+                            completedView
+                        } else if let card = viewModel.currentCard,
+                                  let problem = viewModel.problemFor(card: card) {
+                            cardReviewView(card: card, problem: problem)
+                        } else {
+                            emptyView
+                        }
                     }
                 }
                 .padding(.bottom, 80) // Space for custom tab bar
-
-                // Confetti overlay
-                if showConfetti {
-                    ConfettiView(isActive: $showConfetti)
-                        .ignoresSafeArea()
-                }
             }
-            .navigationTitle("Review")
-            .onAppear { viewModel.loadDueCards() }
+            .scrollIndicators(.hidden)
+
+            // Confetti overlay
+            if showConfetti {
+                ConfettiView(isActive: $showConfetti)
+                    .ignoresSafeArea()
+            }
+        }
+        .navigationTitle("Review")
+        .onAppear { viewModel.loadDueCards() }
     }
 
     private func cardReviewView(card: SpacedRepetitionCard, problem: Problem) -> some View {
@@ -136,10 +151,19 @@ struct ReviewQueueView: View {
                 .foregroundStyle(.secondary)
             Text("No Reviews Due")
                 .font(AppFont.title3)
-            Text("Start solving problems to build your review queue.")
-                .font(AppFont.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+
+            // 💡 Contextual text: guide user to weekly card when future reviews exist
+            if !viewModel.weeklyGroups.isEmpty {
+                Text("No reviews due today. Check your upcoming schedule above.")
+                    .font(AppFont.body)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text("Start solving problems to build your review queue.")
+                    .font(AppFont.body)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
         }
         .padding(AppSpacing.lg)
     }
