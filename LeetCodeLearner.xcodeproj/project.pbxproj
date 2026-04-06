@@ -67,6 +67,7 @@
 		916DA5E1F01E73A601A690BC /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD74A57C4CABF13D87E88 /* NetworkMonitor.swift */; };
 		9638C44D876E1FE8E46576F3 /* SyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE8F5D21DC0CA80C4AC285 /* SyntaxHighlighter.swift */; };
 		966F2EEF4BDEF66EE476530B /* SDDailyChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA377F8B9570730D8B9735 /* SDDailyChallenge.swift */; };
+		97137FBAE4A0B60FEB8D76D5 /* WeeklyScheduleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4EE9224D2FF39A454EA56 /* WeeklyScheduleCard.swift */; };
 		97EF9A4FC46AD37169232143 /* GamifiedXPCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E48CCA894057E850603718 /* GamifiedXPCard.swift */; };
 		9E03AE3FB13AA7EC118CF9A3 /* ChatSystemPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06566920A3D5899D80209F /* ChatSystemPrompts.swift */; };
 		A15E9EE2CD6AD8B60BCA6A97 /* DailyChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E80ED08A17E4B7E0ECF7092 /* DailyChallenge.swift */; };
@@ -94,6 +95,7 @@
 		BB844ACADD459DA534CD0F46 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EC907A059881933D5296B /* OnboardingView.swift */; };
 		C12007CE8E25DF7A2E48DE34 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0459A5E2019CE25B8CFFD1F /* ChatBubbleView.swift */; };
 		C13520DBD837B426E6E77DEF /* UMPIREStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBBC256DC1BA503D72DDB02 /* UMPIREStep.swift */; };
+		C5A0D56489F528FE7899AB0F /* WeekDayIndicatorStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEACBB78A28B90F7821D70 /* WeekDayIndicatorStrip.swift */; };
 		C5A1192359081CB6F13D8215 /* FirestoreModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B58E52B3366B0BD5C474F9 /* FirestoreModelsTests.swift */; };
 		CB9D4413E8C584E9644DC78D /* SM2Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACCF44E687949B4362D04D3 /* SM2Algorithm.swift */; };
 		CBFFEEECDD00DFFD9F9747B6 /* ChatSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC86E11F4773540988CE76 /* ChatSession.swift */; };
@@ -147,6 +149,7 @@
 		093E136FC87AD69E8D43D4AD /* LearningPathsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPathsViewModel.swift; sourceTree = "<group>"; };
 		0AFCD74A57C4CABF13D87E88 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0DB5B58CB46CCDBBAD08C3A5 /* SelectDailyProblemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDailyProblemsUseCase.swift; sourceTree = "<group>"; };
+		10EEACBB78A28B90F7821D70 /* WeekDayIndicatorStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayIndicatorStrip.swift; sourceTree = "<group>"; };
 		140E433FC22063E8B8746C16 /* Problem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		1525E6D2DBAC7D25BA8D279C /* LevelSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSystem.swift; sourceTree = "<group>"; };
 		174DBA9650B5B2C79168EAF0 /* StreakCountingAfterUMPIRETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCountingAfterUMPIRETests.swift; sourceTree = "<group>"; };
@@ -195,6 +198,7 @@
 		7BAD27F47546DDE3DF007F51 /* APIKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyManager.swift; sourceTree = "<group>"; };
 		7E2BF2CDFB3629A7A9850492 /* ProgressResetBugFixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressResetBugFixTests.swift; sourceTree = "<group>"; };
 		7F88538829CC08A9E578523B /* ProgressRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRepositoryProtocol.swift; sourceTree = "<group>"; };
+		84C4EE9224D2FF39A454EA56 /* WeeklyScheduleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyScheduleCard.swift; sourceTree = "<group>"; };
 		87C3D99C78633443447F254E /* ProblemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCardView.swift; sourceTree = "<group>"; };
 		8D31E6305D86586F76485949 /* ProblemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemMapper.swift; sourceTree = "<group>"; };
 		8E80FD895EACCCA32272C5E8 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
@@ -339,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				189141A22FC83A449916266F /* DifficultyRatingView.swift */,
+				10EEACBB78A28B90F7821D70 /* WeekDayIndicatorStrip.swift */,
+				84C4EE9224D2FF39A454EA56 /* WeeklyScheduleCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -958,6 +964,8 @@
 				C13520DBD837B426E6E77DEF /* UMPIREStep.swift in Sources */,
 				DADC647F64D19D2B96EA59B9 /* UpdateSpacedRepetitionUseCase.swift in Sources */,
 				E3C19A44B65ED8498091697C /* UserProblemProgress.swift in Sources */,
+				C5A0D56489F528FE7899AB0F /* WeekDayIndicatorStrip.swift in Sources */,
+				97137FBAE4A0B60FEB8D76D5 /* WeeklyScheduleCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
