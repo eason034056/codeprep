@@ -68,7 +68,8 @@ final class ReviewQueueViewModel: ObservableObject {
         }
         weeklyGroups = result
 
-        weeklyTotalCount = weeklyGroups.reduce(0) { $0 + $1.cards.count }
+        // 💡 Include today's due cards so the card stays visible even when only today has reviews
+        weeklyTotalCount = weeklyGroups.reduce(0) { $0 + $1.cards.count } + dueCards.count
     }
 
     var currentCard: SpacedRepetitionCard? {

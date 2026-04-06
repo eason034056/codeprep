@@ -151,10 +151,19 @@ struct ReviewQueueView: View {
                 .foregroundStyle(.secondary)
             Text("No Reviews Due")
                 .font(AppFont.title3)
-            Text("Start solving problems to build your review queue.")
-                .font(AppFont.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+
+            // 💡 Contextual text: guide user to weekly card when future reviews exist
+            if !viewModel.weeklyGroups.isEmpty {
+                Text("No reviews due today. Check your upcoming schedule above.")
+                    .font(AppFont.body)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text("Start solving problems to build your review queue.")
+                    .font(AppFont.body)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
         }
         .padding(AppSpacing.lg)
     }
