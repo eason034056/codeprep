@@ -63,7 +63,7 @@ final class DIContainer: ObservableObject {
     }
 
     var evaluateApproach: EvaluateUserApproachUseCase {
-        EvaluateUserApproachUseCase(chatRepo: chatRepo, progressRepo: progressRepo)
+        EvaluateUserApproachUseCase(chatRepo: chatRepo, progressRepo: progressRepo, sm2: sm2)
     }
 
     var scheduleNotifications: ScheduleNotificationsUseCase {
