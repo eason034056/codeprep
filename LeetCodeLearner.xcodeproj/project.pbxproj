@@ -73,6 +73,7 @@
 		A15E9EE2CD6AD8B60BCA6A97 /* DailyChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E80ED08A17E4B7E0ECF7092 /* DailyChallenge.swift */; };
 		A385048E9CFEE3DD1D5F6A0E /* StreakCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E405A94E81C2F8C734A8ED /* StreakCalculatorTests.swift */; };
 		A395124059C671078C653EA8 /* ReviewQueueViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E56AC268955E6315354830 /* ReviewQueueViewModelTests.swift */; };
+		A396000000000001DEADBEEF /* WeeklyScheduleCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E60000000000001DEADBEE /* WeeklyScheduleCardTests.swift */; };
 		A3A43848677AF9715E3DCDD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F920962494A0997C41EA6000 /* GoogleService-Info.plist */; };
 		A3B3333D13093B35883E0363 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE7FB74D5FBB71EF61D930 /* Difficulty.swift */; };
 		A3E574370E8EA468FE7025F4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B720A610421843FFBC86BE /* HomeView.swift */; };
@@ -160,6 +161,7 @@
 		1F2296FDDF619B2A9484EACE /* ChatRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryProtocol.swift; sourceTree = "<group>"; };
 		1FCC9E136CE48B8F8537175A /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		22E56AC268955E6315354830 /* ReviewQueueViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueViewModelTests.swift; sourceTree = "<group>"; };
+		22E60000000000001DEADBEE /* WeeklyScheduleCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyScheduleCardTests.swift; sourceTree = "<group>"; };
 		241B10AE63D2D6F3864F0BE4 /* LeetCodeLearner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LeetCodeLearner.entitlements; sourceTree = "<group>"; };
 		26E668979DFB67B7E3D9208C /* SM2AlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM2AlgorithmTests.swift; sourceTree = "<group>"; };
 		2DB760EB5352FC7EDCA80BDE /* LeetCodeLearnerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LeetCodeLearnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -451,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				22E56AC268955E6315354830 /* ReviewQueueViewModelTests.swift */,
+				22E60000000000001DEADBEE /* WeeklyScheduleCardTests.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				87A07FA0E2DB6CB9019CB99E /* ProgressMapperTests.swift in Sources */,
 				FDE34F4AAB25622AF96E83E1 /* ProgressResetBugFixTests.swift in Sources */,
 				A395124059C671078C653EA8 /* ReviewQueueViewModelTests.swift in Sources */,
+				A396000000000001DEADBEEF /* WeeklyScheduleCardTests.swift in Sources */,
 				B8850E0077733BE732410B60 /* SM2AlgorithmEdgeCaseTests.swift in Sources */,
 				B6943355F31713CD81747E3F /* SM2AlgorithmTests.swift in Sources */,
 				767B73F7B4CE02692B192ABD /* ScheduleNotificationsUseCaseTests.swift in Sources */,
