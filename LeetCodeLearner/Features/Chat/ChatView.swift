@@ -73,6 +73,10 @@ struct ChatView: View {
                 }
                 .contentMargins(.top, 0, for: .scrollContent)
                 .scrollContentBackground(.hidden)
+                // 💡 點擊聊天區域收鍵盤
+                .onTapGesture {
+                    isInputFocused = false
+                }
                 .onChange(of: viewModel.messages.count) { _, _ in
                     withAnimation(AppAnimation.springDefault) {
                         proxy.scrollTo(viewModel.messages.last?.id, anchor: .bottom)
@@ -190,20 +194,32 @@ struct ChatView: View {
     }
 
     private var inputBar: some View {
-        HStack(spacing: AppSpacing.sm) {
-            TextField("Describe your approach...", text: $viewModel.inputText, axis: .vertical)
-                .textFieldStyle(.plain)
-                .lineLimit(1...10)
-                .focused($isInputFocused)
-                .font(AppFont.body)
-                .padding(.horizontal, AppSpacing.md)
-                .padding(.vertical, AppSpacing.sm)
+        // 💡 用 HStack + alignment: .bottom 讓送出按鈕固定在右下角，
+        //    TextEditor 可自由向上展開
+        HStack(alignment: .bottom, spacing: AppSpacing.sm) {
+            // ⚠️ TextEditor 沒有原生 placeholder，所以用 ZStack overlay 手動實現
+            ZStack(alignment: .topLeading) {
+                if viewModel.inputText.isEmpty {
+                    Text("Describe your approach...")
+                        .font(AppFont.body)
+                        .foregroundStyle(Color.gray.opacity(0.5))
+                        .padding(.horizontal, 5) // 💡 對齊 TextEditor 內部文字的偏移
+                        .padding(.vertical, 8)
+                        .allowsHitTesting(false) // 讓點擊穿透到底下的 TextEditor
+                }
+
+                TextEditor(text: $viewModel.inputText)
+                    .font(AppFont.body)
+                    .focused($isInputFocused)
+                    .scrollContentBackground(.hidden) // 💡 移除 TextEditor 預設灰底
+                    .frame(minHeight: 36, maxHeight: 120) // 最小一行，最多約 5 行
+                    .fixedSize(horizontal: false, vertical: true) // 💡 讓高度隨內容自動長高
+            }
 
             Button {
+                isInputFocused = false // 💡 送出後立即收鍵盤
                 viewModel.sendMessage()
             } label: {
-                // 💡 Crossfade between send arrow and spinner —
-                //    spinner shows only in the pre-stream window (waiting for first chunk).
                 Group {
                     if viewModel.isStreaming && viewModel.streamingText.isEmpty {
                         ProgressView()
